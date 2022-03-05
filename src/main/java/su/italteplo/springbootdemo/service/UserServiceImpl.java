@@ -1,6 +1,7 @@
 package su.italteplo.springbootdemo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import su.italteplo.springbootdemo.model.User;
 import su.italteplo.springbootdemo.repository.UserRepository;
@@ -12,7 +13,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
 
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
+
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -21,6 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(Long id) {
+
         return userRepository.getById(id);
     }
 

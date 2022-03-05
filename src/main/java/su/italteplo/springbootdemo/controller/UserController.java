@@ -1,6 +1,8 @@
 package su.italteplo.springbootdemo.controller;
 
 
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,9 +10,11 @@ import su.italteplo.springbootdemo.model.User;
 import su.italteplo.springbootdemo.service.UserService;
 
 import java.util.List;
+import java.util.Properties;
 
 @Controller
 public class UserController {
+
 
     private final UserService userService;
 
@@ -20,6 +24,7 @@ public class UserController {
 
     @GetMapping("/")
     public String findAll(Model model) {
+
         List<User> myList = userService.findAll();
         model.addAttribute("users", myList);
         return "user-list";
